@@ -1,17 +1,20 @@
 import path = require("path");
-import { Uri } from "vscode";
+import * as vscode from "vscode";
 import * as xlsx from "xlsx";
 
 export const funcs = {
   // xlsx转ts
-  xlsxToTs: (document: Uri) => {
-    const excelPath = path.resolve(__dirname, "../../src/locales/lang.xlsx");
+  xlsxToTs: (document: vscode.Uri) => {
     try {
-      console.log("xlsx======>xlsxToTs", excelPath);
-      (global as any).readFile = xlsx.readFile;
-      (global as any).pathFile = document;
+      console.log("xlsx======>xlsxToTs");
+      //   const pathFile = await vscode.workspace.openTextDocument(document.fsPath);
       (global as any).xlsx = xlsx;
-      //   const workbook = readFile(document.path);
+      (global as any).pathFile = document;
+      const file = xlsx.read(document.path);
+      console.log(file, "xlsx======data");
+      for (const sheetName of file.SheetNames) {
+        const data = xlsx.utils.sheet_to_json(file.Sheets[sheetName]);
+      }
     } catch (err) {
       console.log(err, "xlsx======error");
     }
