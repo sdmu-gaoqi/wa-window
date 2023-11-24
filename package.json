@@ -1,9 +1,9 @@
 {
-  "name": "wa-csvToTs",
+  "name": "wa-xlsxToTs",
   "displayName": "wa-csvToTs",
-  "description": "csv保存时生成ts文件",
+  "description": "vscode菜单扩展",
   "icon": "img/avatar.png",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "engines": {
     "vscode": "^1.61.0"
   },
@@ -11,30 +11,30 @@
     "Other"
   ],
   "activationEvents": [
-    "onLanguage:csv"
+    "*"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "wa-csv-to-ts(目标csv文件保存自动生成langules.ts文件)",
+      "title": "wa-xlsx-to-ts(目标xlsx文件保存自动生成langules.ts文件)",
       "properties": {
-        "csvDefaultLan": {
+        "xlsxDefaultLan": {
           "type": "string",
           "default": "zh-CN",
           "description": "首选默认语言"
         },
-        "csvPath": {
-          "type": "string",
-          "default": "src/locales/locales.csv",
-          "description": "目标csv文件"
-        },
-        "csvTransformPath": {
+        "xlsxTransformPath": {
           "type": "string",
           "default": "src/locales",
           "description": "转换的文件输出地址"
         },
-        "csvTransformLanauges": {
+        "xlsxTransformType": {
+          "type": "string",
+          "default": "ts",
+          "description": "转换的文件类型(ts or js)"
+        },
+        "xlsxTransformLanauges": {
           "type": "array",
           "default": [
             "zh-CN",
@@ -46,7 +46,38 @@
           "description": "需要转换哪几种类型"
         }
       }
-    }
+    },
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.xlsxToTs",
+          "when": "resourceLangId == xlsx",
+          "group": "typescript support"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "extension.xlsxToTs",
+          "when": "resourceLangId == xlsx",
+          "group": "typescript support"
+        }
+      ]
+    },
+    "languages": [
+      {
+        "id": "xlsx",
+        "extensions": [
+          ".xlsx",
+          ".xlsm"
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "extension.xlsxToTs",
+        "title": "xlsx转ts"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "yarn run package",
@@ -79,8 +110,11 @@
     "webpack-cli": "^5.1.1"
   },
   "dependencies": {
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "xlsx": "^0.18.5"
   },
   "publisher": "wa",
-  "license": "SEE LICENSE IN LICENSE.txt"
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "repository": "git@github.com:sdmu-gaoqi/wa-csvToTs.git",
+  "author": "gaoqi <1224362143@qq.com>"
 }

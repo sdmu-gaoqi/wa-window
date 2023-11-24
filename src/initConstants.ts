@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
 
-export const defaultCsvPath = "src/locales/locales.csv";
-export const defaultCsvTransformPath = "src/locales";
-export const defaultCsvTransformLanauges = [
+export const defaultXlsxPath = "src/locales/lang.xlsx";
+export const defaultXlsxTransformPath = "src/locales";
+export const defaultXlsxTransformLanauges = [
   "zh-CN",
   "zh-TW",
   "en-US",
@@ -15,21 +15,19 @@ export const defaultLang = "zh-CN";
  * @description 获取vscode 插件配置 没有就用默认的
  * */
 export const getInitConstants = () => {
-  const _csvPath =
-    vscode.workspace.getConfiguration().get("csvPath") || defaultCsvPath;
-  const _csvTransformPath =
-    vscode.workspace.getConfiguration().get("csvTransformPath") ||
-    defaultCsvTransformPath;
-  const _csvTransformLanauges =
-    vscode.workspace.getConfiguration().get("csvTransformLanauges") ||
-    defaultCsvTransformLanauges;
-  const _csvDefaultLan =
-    vscode.workspace.getConfiguration().get("csvDefaultLan") || defaultLang;
+  const xlsxPath =
+    vscode.workspace.getConfiguration().get("xlsxPath") || defaultXlsxPath;
+  const _xlsxTransformPath =
+    vscode.workspace.getConfiguration().get("xlsxTransformPath") ||
+    defaultXlsxTransformPath;
+  const _xlsxTransformLanauges =
+    vscode.workspace.getConfiguration().get("xlsxTransformLanauges") ||
+    defaultXlsxTransformLanauges;
 
   return {
-    csvPath: _csvPath as string,
-    csvTransformPath: _csvTransformPath as string,
-    lanauges: _csvTransformLanauges as string[],
+    xlsxPath: xlsxPath as string,
+    xlsxTransformPath: _xlsxTransformPath as string,
+    lanauges: _xlsxTransformLanauges as string[],
     defaultLang,
   };
 };

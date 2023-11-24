@@ -6,21 +6,21 @@
 
 #### 插件配置
 
-##### csvDefaultLan
+##### xlsxDefaultLan
 
 默认的语言 配置行中缺少的语言文案 按照默认语言的来
 
-##### csvPath
+##### xlsxPath
 
 插件生效的 csv 文件路径 比如 项目跟路径/src/locales/csv.csv 输入 /src/locales/csv.csv
 默认值 /src/locales/locales.csv
 
-##### csvTransformPath
+##### xlsxTransformPath
 
 转换保存的文件路径 没有的话自动创建路径
 默认值 /src/locales
 
-##### csvTransformLanauges
+##### xlsxTransformLanauges
 
 插件需要转换的语言表集合
 默认值 ["zh-CN", "zh-TW", "en-US", "ja-JP", "ko-KR"]
