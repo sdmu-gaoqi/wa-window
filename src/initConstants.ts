@@ -20,14 +20,14 @@ export const getInitConstants = () => {
   const _xlsxTransformPath =
     vscode.workspace.getConfiguration().get("xlsxTransformPath") ||
     defaultXlsxTransformPath;
-  const _xlsxTransformLanauges =
-    vscode.workspace.getConfiguration().get("xlsxTransformLanauges") ||
+  const _xlsxTransformType =
+    vscode.workspace.getConfiguration().get("xlsxTransformType") ||
     defaultXlsxTransformLanauges;
 
   return {
     xlsxPath: xlsxPath as string,
     xlsxTransformPath: _xlsxTransformPath as string,
-    lanauges: _xlsxTransformLanauges as string[],
+    xlsxTransformType: _xlsxTransformType as string,
     defaultLang,
   };
 };
