@@ -1,9 +1,9 @@
 {
   "name": "wa-xlsxToTs",
-  "displayName": "wa-csvToTs",
+  "displayName": "wa-xlsxToTs",
   "description": "vscode菜单扩展",
   "icon": "img/avatar.png",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.61.0"
   },

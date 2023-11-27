@@ -1,14 +1,10 @@
-# CsvToTs
+# XlsxToTs
 
 ---
 
-#### csv 文件自动转换 ts 语言配置
+#### xlsx 文件自动转换 ts 语言配置
 
 #### 插件配置
-
-##### xlsxDefaultLan
-
-默认的语言 配置行中缺少的语言文案 按照默认语言的来
 
 ##### xlsxPath
 
