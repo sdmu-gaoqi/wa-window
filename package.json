@@ -1,9 +1,9 @@
 {
-  "name": "wa-menus",
-  "displayName": "wa-menus",
+  "name": "wa-window",
+  "displayName": "wa-window",
   "description": "vscode菜单扩展",
   "icon": "img/avatar.png",
-  "version": "0.0.1",
+  "version": "2.2.1",
   "engines": {
     "vscode": "^1.61.0"
   },
@@ -17,74 +17,49 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "wa-xlsx-to-ts(目标xlsx文件保存自动生成langules.ts文件)",
+      "title": "wa-window(窗口工具)",
       "properties": {
-        "xlsxDefaultLan": {
+        "windowBaiduAppid": {
           "type": "string",
-          "default": "zh-CN",
-          "description": "首选默认语言"
+          "default": "",
+          "description": "百度翻译appid"
         },
-        "xlsxTransformPath": {
+        "windowBaiduKey": {
           "type": "string",
-          "default": "src/locales",
-          "description": "转换的文件输出地址"
-        },
-        "xlsxTransformType": {
-          "type": "string",
-          "default": "ts",
-          "description": "转换的文件类型(ts or js)"
+          "default": "",
+          "description": "百度翻译唯一key"
         }
       }
     },
-    "menus": {
-      "explorer/context": [
+    "viewsContainers": {
+      "activitybar": [
         {
-          "command": "extension.xlsxToTs",
-          "when": "resourceLangId == xlsx",
-          "group": "typescript support"
-        },
-        {
-          "command": "extension.createRfc",
-          "group": "typescript support",
-          "when": "explorerResourceIsFolder"
-        },
-        {
-          "command": "extension.createVue",
-          "group": "typescript support",
-          "when": "explorerResourceIsFolder"
-        }
-      ],
-      "editor/title/context": [
-        {
-          "command": "extension.xlsxToTs",
-          "when": "resourceLangId == xlsx",
-          "group": "typescript support"
+          "id": "wa-sideMenus",
+          "title": "侧边工具栏",
+          "icon": "img/avatar.png"
         }
       ]
     },
-    "languages": [
-      {
-        "id": "xlsx",
-        "extensions": [
-          ".xlsx",
-          ".xlsm"
-        ]
-      }
-    ],
-    "commands": [
-      {
-        "command": "extension.xlsxToTs",
-        "title": "xlsx转ts"
-      },
-      {
-        "command": "extension.createRfc",
-        "title": "生成rfc组件"
-      },
-      {
-        "command": "extension.createVue",
-        "title": "生成vue组件"
-      }
-    ]
+    "views": {
+      "wa-sideMenus": [
+        {
+          "type": "webview",
+          "id": "wa-translate",
+          "name": "翻译"
+        },
+        {
+          "type": "webview",
+          "id": "wa-aes-decrypt",
+          "name": "aes解密"
+        }
+      ]
+    },
+    "menus": {
+      "explorer/context": [],
+      "editor/title/context": []
+    },
+    "languages": [],
+    "commands": []
   },
   "scripts": {
     "vscode:prepublish": "yarn run package",
@@ -99,32 +74,56 @@
     "build": "vsce package",
     "create-publisher": "vsce create-publisher",
     "vpub": "vsce publish",
-    "release": "release-it"
+    "release": "release-it",
+    "dev": "webpack-dev-server -c pack/webpack.dev.js",
+    "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "@babel/preset-typescript": "^7.26.0",
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "20.2.5",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "@types/vscode": "^1.61.0",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
     "@vscode/test-electron": "^2.3.2",
+    "babel-loader": "^9.2.1",
     "eslint": "^8.41.0",
     "glob": "^8.1.0",
+    "html-webpack-plugin": "^5.6.3",
     "mocha": "^10.2.0",
     "release-it": "^17.0.0",
     "ts-loader": "^9.4.3",
     "typescript": "^5.1.3",
-    "webpack": "^5.85.0",
-    "webpack-cli": "^5.1.1"
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0",
+    "webpack-merge": "^6.0.1"
   },
   "dependencies": {
+    "@release-it/conventional-changelog": "^8.0.1",
+    "@types/crypto-js": "^4.2.2",
+    "@types/md5": "^2.3.5",
+    "ahooks": "^3.8.1",
+    "axios": "^1.6.7",
+    "cross-fetch": "^4.0.0",
+    "crypto-js": "^4.2.0",
     "fs": "^0.0.1-security",
+    "md5": "^2.3.0",
     "prettier": "^3.1.0",
-    "xlsx": "^0.18.5"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "styled-components": "^6.1.13"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdmu-gaoqi/wa-vscode-menu.git"
   },
   "publisher": "wa",
   "license": "SEE LICENSE IN LICENSE.txt",
-  "repository": "git@github.com:sdmu-gaoqi/wa-csvToTs.git",
   "author": "gaoqi <1224362143@qq.com>"
 }
