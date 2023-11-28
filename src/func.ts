@@ -4,6 +4,12 @@ import * as xlsx from "xlsx";
 import * as fs from "fs";
 import * as prettier from "prettier";
 import { getInitConstants } from "./initConstants";
+import {
+  jsxContent,
+  tsxContent,
+  vueTemplateContent,
+  vueTsxContent,
+} from "./constants/content";
 
 export const funcs = {
   // xlsx转ts
@@ -12,7 +18,6 @@ export const funcs = {
       //   const pathFile = await vscode.workspace.openTextDocument(document.fsPath);
       (global as any).xlsx = xlsx;
       (global as any).pathFile = document;
-      vscode.window.showInformationMessage("文件转换中...");
       const { xlsxTransformPath, xlsxTransformType } = getInitConstants();
       const data = fs.readFileSync(document.fsPath).buffer;
       const file = xlsx.read(data);
@@ -65,5 +70,73 @@ export const funcs = {
       vscode.window.showErrorMessage("文件转换失败", JSON.stringify(err));
       console.log(err, "xlsx======error");
     }
+  },
+  // 生成React组件
+  createRfc: async (document: vscode.Uri) => {
+    const fileName = await vscode.window.showInputBox({
+      prompt: "请输入文件名",
+      value: "index.ts",
+    });
+    if (!fileName) {
+      return;
+    }
+    const isTsx = fileName.endsWith(".tsx");
+    (global as any).document = document;
+    const componentName = await vscode.window.showInputBox({
+      prompt: "请输入组件名",
+      value: "",
+    });
+
+    if (!componentName) {
+      return;
+    }
+
+    const fileContent = isTsx
+      ? tsxContent(componentName)
+      : jsxContent(componentName);
+
+    const config = await prettier.resolveConfig("path/to/file", {
+      useCache: false,
+    });
+
+    const filePath = `${document.path}/${fileName}`;
+    prettier
+      .format(fileContent, { ...config, semi: false, filepath: filePath })
+      .then((res) => {
+        fs.writeFileSync(filePath, res, "utf8");
+      });
+    console.log("menuLog");
+  },
+  // 生成vue组件
+  createVue: async (document: vscode.Uri) => {
+    const fileName = await vscode.window.showInputBox({
+      prompt: "请输入文件名",
+      value: "index.vue",
+    });
+    if (!fileName) {
+      return;
+    }
+    const isTsx = fileName.endsWith(".tsx");
+    (global as any).document = document;
+    const componentName = await vscode.window.showInputBox({
+      prompt: "请输入组件名",
+      value: "",
+    });
+
+    if (!componentName) {
+      return;
+    }
+
+    const fileContent = isTsx
+      ? vueTsxContent(componentName)
+      : vueTemplateContent(componentName);
+
+    const config = await prettier.resolveConfig("path/to/file", {
+      useCache: false,
+    });
+
+    const filePath = `${document.path}/${fileName}`;
+    fs.writeFileSync(filePath, fileContent, "utf8");
+    console.log("menuLog");
   },
 };

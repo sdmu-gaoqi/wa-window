@@ -42,6 +42,16 @@
           "command": "extension.xlsxToTs",
           "when": "resourceLangId == xlsx",
           "group": "typescript support"
+        },
+        {
+          "command": "extension.createRfc",
+          "group": "typescript support",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "extension.createVue",
+          "group": "typescript support",
+          "when": "explorerResourceIsFolder"
         }
       ],
       "editor/title/context": [
@@ -65,6 +75,14 @@
       {
         "command": "extension.xlsxToTs",
         "title": "xlsx转ts"
+      },
+      {
+        "command": "extension.createRfc",
+        "title": "生成rfc组件"
+      },
+      {
+        "command": "extension.createVue",
+        "title": "生成vue组件"
       }
     ]
   },
