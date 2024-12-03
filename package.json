@@ -3,7 +3,7 @@
   "displayName": "wa-window",
   "description": "vscode菜单扩展",
   "icon": "img/avatar.png",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "engines": {
     "vscode": "^1.61.0"
   },
