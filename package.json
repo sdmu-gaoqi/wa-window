@@ -3,16 +3,14 @@
   "displayName": "wa-window",
   "description": "vscode菜单扩展",
   "icon": "img/avatar.png",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "engines": {
     "vscode": "^1.61.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "*"
-  ],
+  "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
