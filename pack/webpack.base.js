@@ -9,7 +9,8 @@ module.exports = {
   }, // 入口文件
   output: {
     filename: "static/js/[name].js",
-    path: path.join(__dirname, "./dist"),
+    // path: path.join(__dirname, "./dist"),
+    path: path.join(__dirname, "../dist"),
     clean: true,
     publicPath: "/",
   },

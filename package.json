@@ -76,7 +76,7 @@
     "vpub": "vsce publish",
     "release": "release-it",
     "dev": "webpack-dev-server -c pack/webpack.dev.js",
-    "preinstall": "npx only-allow pnpm"
+    "web:build": "webpack -c pack/webpack.prod.js"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
