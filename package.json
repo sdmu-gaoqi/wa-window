@@ -51,6 +51,11 @@
           "type": "webview",
           "id": "wa-aes-decrypt",
           "name": "aes解密"
+        },
+        {
+          "type": "webview",
+          "id": "wa-iframe",
+          "name": "web"
         }
       ]
     },

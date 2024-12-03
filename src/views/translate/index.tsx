@@ -11,8 +11,8 @@ import bridge from "../../utils/bridge";
 const TranslateTsx = () => {
   const state = useReactive({
     currentContent: "",
-    currentLang: "zh",
-    targetLang: "en",
+    currentLang: "en",
+    targetLang: "zh",
     targetContent: "",
     loading: false,
   });

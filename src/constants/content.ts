@@ -11,4 +11,5 @@ export enum PostmessageType {
   翻译完成 = "translateComplete",
   解密 = "aes",
   解密完成 = "aesComplete",
+  打开页面 = "openPage",
 }

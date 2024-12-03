@@ -1,6 +1,5 @@
 import * as vscode from "vscode";
 import { ChatWebview } from "..";
-import { log } from "../../utils/log";
 import { PostmessageType } from "../../constants/content";
 import { translateServer } from "../../utils/translate";
 

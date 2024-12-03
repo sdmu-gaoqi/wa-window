@@ -1,6 +1,7 @@
 import { PostmessageType } from "../constants/content";
 
 const bridge = {
+  // vscode listen webview
   [PostmessageType.翻译完成]: (callback: (data: string) => void) => {
     window.addEventListener("message", (e) => {
       const data = e?.data;
@@ -9,6 +10,7 @@ const bridge = {
       }
     });
   },
+  // webview to vscode
   [PostmessageType.翻译]: (state: {
     currentContent: string;
     currentLang: string;
