@@ -7,6 +7,7 @@ import Label from "../component/Label";
 import { useLockFn, useMount, useReactive } from "ahooks";
 import { Button } from "../component/Button";
 import bridge from "../../utils/bridge";
+import { GlobalStyle } from "../component/Common";
 
 const TranslateTsx = () => {
   const state = useReactive({
@@ -34,6 +35,7 @@ const TranslateTsx = () => {
 
   return (
     <div>
+      <GlobalStyle />
       <TextArea
         placeholder="请输入需要翻译的文字"
         rows={5}

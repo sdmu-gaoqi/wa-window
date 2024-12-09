@@ -31,7 +31,6 @@ module.exports = {
     extensions: [".js", ".tsx", ".ts"],
   },
   plugins: [
-    // UnoCSS(),
     new HtmlWebpackPlugin({
       title: "Index Page",
       chunks: ["index"],

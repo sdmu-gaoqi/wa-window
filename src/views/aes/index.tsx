@@ -7,17 +7,20 @@ import { Button } from "../component/Button";
 import bridge from "../../utils/bridge";
 import { PostmessageType } from "../../constants/content";
 import Select from "../component/Select";
+import { GlobalStyle } from "../component/Common";
+import { storage } from "../../utils/storage";
 
 const TranslateTsx = () => {
   const state = useReactive({
     content: "",
-    aesKey: "",
+    aesKey: storage.getAesKey(),
     result: "",
     loading: false,
     digit: 16,
   });
 
   const aes = useLockFn(async () => {
+    storage.setAesKey(state.aesKey);
     bridge[PostmessageType.解密](state);
   });
 
@@ -29,6 +32,7 @@ const TranslateTsx = () => {
 
   return (
     <div>
+      <GlobalStyle />
       <TextArea
         placeholder="请输入需要解密的数据"
         rows={5}
