@@ -8,6 +8,7 @@ import { useLockFn, useMount, useReactive } from "ahooks";
 import { Button } from "../component/Button";
 import bridge from "../../utils/bridge";
 import { GlobalStyle } from "../component/Common";
+import Result from "../component/Result";
 
 const TranslateTsx = () => {
   const state = useReactive({
@@ -61,7 +62,7 @@ const TranslateTsx = () => {
             <option value={item.command}>{item.label}</option>
           ))}
         </Select>
-        <div style={{ margin: "20px 0" }}>{state.targetContent}</div>
+        <Result>{state.targetContent}</Result>
         <Button onClick={translate}>
           {state.loading ? "翻译中..." : "翻译"}
         </Button>

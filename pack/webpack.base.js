@@ -1,12 +1,21 @@
 const path = require("path");
+const pageConfig = require("./page.config");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const entry = Object.fromEntries(pageConfig.map((i) => [i?.key, i?.entry]));
+const htmls = pageConfig?.map(
+  (i) =>
+    new HtmlWebpackPlugin({
+      title: i?.title,
+      chunks: i?.chunks,
+      filename: i?.filename,
+      template:
+        i?.template || path.resolve(__dirname, "../src/views/index.html"),
+    })
+);
+
 module.exports = {
-  entry: {
-    index: path.join(__dirname, "../src/views/index.tsx"),
-    translate: path.join(__dirname, "../src/views/translate/index.tsx"),
-    aes: path.join(__dirname, "../src/views/aes/index.tsx"),
-  }, // 入口文件
+  entry, // 入口文件
   output: {
     filename: "static/js/[name].js",
     // path: path.join(__dirname, "./dist"),
@@ -30,28 +39,7 @@ module.exports = {
   resolve: {
     extensions: [".js", ".tsx", ".ts"],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "Index Page",
-      chunks: ["index"],
-      filename: "index.html",
-      template: path.resolve(__dirname, "../src/views/index.html"),
-    }),
-    new HtmlWebpackPlugin({
-      title: "My Album Page",
-      text: "一个标题",
-      filename: "translate.html",
-      template: path.resolve(__dirname, "../src/views/index.html"),
-      chunks: ["translate"],
-    }),
-    new HtmlWebpackPlugin({
-      title: "My Album Page",
-      text: "一个标题",
-      filename: "aes.html",
-      template: path.resolve(__dirname, "../src/views/index.html"),
-      chunks: ["aes"],
-    }),
-  ],
+  plugins: [...htmls],
   optimization: {
     realContentHash: true,
   },

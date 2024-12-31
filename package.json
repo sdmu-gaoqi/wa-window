@@ -49,6 +49,11 @@
           "type": "webview",
           "id": "wa-aes-decrypt",
           "name": "aes解密"
+        },
+        {
+          "type": "webview",
+          "id": "wa-json2ts",
+          "name": "json转ts"
         }
       ]
     },
@@ -107,9 +112,11 @@
     "@types/md5": "^2.3.5",
     "ahooks": "^3.8.1",
     "axios": "^1.6.7",
+    "copy-to-clipboard": "^3.3.3",
     "cross-fetch": "^4.0.0",
     "crypto-js": "^4.2.0",
     "fs": "^0.0.1-security",
+    "json-to-ts": "^2.1.0",
     "md5": "^2.3.0",
     "prettier": "^3.1.0",
     "react": "^18.3.1",

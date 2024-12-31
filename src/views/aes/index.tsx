@@ -9,6 +9,7 @@ import { PostmessageType } from "../../constants/content";
 import Select from "../component/Select";
 import { GlobalStyle } from "../component/Common";
 import { storage } from "../../utils/storage";
+import Result from "../component/Result";
 
 const TranslateTsx = () => {
   const state = useReactive({
@@ -59,7 +60,7 @@ const TranslateTsx = () => {
           ))}
         </Select>
         <Label>解密结果:</Label>
-        <div style={{ margin: "20px 0" }}>{state.result}</div>
+        <Result>{state.result}</Result>
         <Button onClick={aes}>{state.loading ? "解密中..." : "解密"}</Button>
       </div>
     </div>

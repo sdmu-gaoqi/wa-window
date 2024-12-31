@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import TranslateWebview from "./webviews/instance/translate";
 import AesWebview from "./webviews/instance/aes";
+import Json2TsWebview from "./webviews/instance/json2ts";
 
 export default class Extension {
   constructor() {}
@@ -18,6 +19,15 @@ export default class Extension {
     vscode.window.registerWebviewViewProvider(
       "wa-aes-decrypt",
       new AesWebview(context),
+      {
+        webviewOptions: {
+          retainContextWhenHidden: false,
+        },
+      }
+    );
+    vscode.window.registerWebviewViewProvider(
+      "wa-json2ts",
+      new Json2TsWebview(context),
       {
         webviewOptions: {
           retainContextWhenHidden: false,
