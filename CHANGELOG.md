@@ -1,5 +1,7 @@
 
 
+## [0.2.3](https://github.com/sdmu-gaoqi/wa-window/compare/0.2.2...0.2.3) (2025-01-09)
+
 ## 0.2.2 (2024-12-31)
 
 
