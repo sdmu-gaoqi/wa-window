@@ -5,7 +5,14 @@ import { Button } from "../Button";
 const Result = (props: { children: React.ReactNode }) => {
   return (
     <>
-      <div style={{ margin: "20px 0" }}>{props.children || ""}</div>
+      <div
+        style={{
+          margin: "20px 0",
+          color: "var(--vscode-textLink-activeForeground)",
+        }}
+      >
+        {props.children || ""}
+      </div>
       <Button
         onClick={() => {
           copy(props.children as any);

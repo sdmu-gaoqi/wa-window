@@ -4,12 +4,17 @@ export const Button = styled.button`
   background-color: transparent;
   color: white;
   outline: none;
-  border: 1px solid white;
-  height: 36px;
+  height: 30px;
+  font-size: var(--vscode-font-size);
   width: 100%;
   cursor: pointer;
+  color: var(--vscode-button-foreground);
+  background-color: var(--vscode-button-background);
+  border: none;
+  margin: 2px 0;
   &:hover,
   &:active {
-    background-color: #00bbff73;
+    color: var(--vscode-button-foreground);
+    background-color: var(--vscode-button-hoverBackground);
   }
 `;

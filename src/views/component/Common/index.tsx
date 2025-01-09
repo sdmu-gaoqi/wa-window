@@ -2,28 +2,26 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     input: {
-        background-color: #fff;
-        color: #5e5e5e;
+        background-color: var(--vscode-input-background);
+        color: var(--vscode-foreground);
         outline: none;
-        border: none;
         border-radius: 2px;
     }
     select {
-        background-color: #fff;
-        color: #5e5e5e;
+        background-color: var(--vscode-input-background);
+        color: var(--vscode-foreground);
         outline: none;
-        border: none;
         border-radius: 2px;
 
         option {
-            color: #5e5e5e;
+            color: var(--vscode-foreground);
         }
     }
     textarea {
-        background-color: #fff;
-        color: #5e5e5e;
+        background-color: var(--vscode-input-background);
+        resize: none;
+        color: var(--vscode-foreground);
         outline: none;
-        border: none;
         border-radius: 2px;
     }
 `;
